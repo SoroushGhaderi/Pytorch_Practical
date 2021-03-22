@@ -17,8 +17,23 @@ print(z)
 z.backward()
 print(x.grad)
 
-# we can set requires grad equals false in 3 ways
+# we can set requires_grad equals false in 3 ways
 # x.requires_grad_(False)
 # x.detach
 # with torch.no_grad():
+
+# first
+print(x)
+x.requires_grad_(False)
+print(x)
+
+# second
+print(x)
+x.detach()
+print(x)
+
+# third
+with torch.no_grad():
+    y = x + 2
+    print(y)
 
