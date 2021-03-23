@@ -6,8 +6,13 @@ Y = np.array([3, 6, 9, 12])
 # weight initialization
 w = np.array([0.1, 0.2, 0.13, 0.4])
 
+# forward propagation step
 def forward(x):
     return x * w
+
+# define loss function
+def loss(y, y_pred):
+    return np.mean(np.square(y - y_pred))
 
 
 
