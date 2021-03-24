@@ -7,8 +7,9 @@ X = torch.tensor([[1], [2], [3], [4]], dtype=torch.float)
 Y = torch.tensor([[3], [6], [9], [12]], dtype=torch.float)
 
 n_samples, n_features = X.shape
-print(n_samples, n_features)
+print("n_samples: {}, n_features: {}".format(n_samples, n_features))
 
+# build 1*1 network, only one neuron
 input_size = n_features
 output_size = n_features
 
