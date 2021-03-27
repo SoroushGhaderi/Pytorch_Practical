@@ -5,6 +5,15 @@ from sklearn import datasets
 import matplotlib.pyplot as plt
 
 
+def plot_regression(network, x_value, y_value):
+    predicted = network(x_value).detach().numpy()
+    # plot scatter of x and y
+    plt.plot(x_value, y_value, "ro")
+    # plot x and predicted value
+    plt.plot(x_value, predicted, "b")
+    plt.show()
+
+
 def main():
     # create dataset
     X_numpy, y_numpy = datasets.make_regression(n_samples=100,
@@ -47,16 +56,8 @@ def main():
                           nth_epoch=epoch + 1,
                           nth_weight=w[0][0]))
 
-    # define function for plot regression line
-    def plot_regression(x_value, y_value):
-        predicted = model(x_value).detach().numpy()
-        # plot scatter of x and y
-        plt.plot(x_value, y_value, "ro")
-        # plot x and predicted value
-        plt.plot(x_value, predicted, "b")
-        plt.show()
-
-    plot_regression(X, y)
+    # call plot regression
+    plot_regression(model, X, y)
 
 
 if __name__ == '__main__':
