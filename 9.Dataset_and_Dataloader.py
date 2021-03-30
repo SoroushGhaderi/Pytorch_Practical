@@ -3,6 +3,7 @@ from torch.utils.data import DataLoader, Dataset
 import numpy as np
 import math
 
+
 class WineDataset(Dataset):
 
     def __init__(self):
@@ -33,4 +34,3 @@ for epoch in range(num_epoch):
         if (i+1) % 5 == 0:
             print("epoch {}/{}, step {}/{}"
                   .format(epoch+1, num_epoch, i+1, n_iterations))
-
