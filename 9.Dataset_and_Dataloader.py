@@ -1,5 +1,4 @@
 import torch
-import torchvision
 from torch.utils.data import DataLoader, Dataset
 import numpy as np
 import math
@@ -19,8 +18,19 @@ class WineDataset(Dataset):
     def __len__(self):
         return self.n_samples
 
+
 dataset = WineDataset()
-first_data = dataset[0]
-features, labels = first_data
-print(first_data)
-print(features, labels)
+dataloader = DataLoader(dataset=dataset, batch_size=4, shuffle=True, num_workers=2)
+
+num_epoch = 2
+total_sample = len(dataset)
+n_iterations = math.ceil(total_sample/4)
+print(total_sample, n_iterations)
+
+for epoch in range(num_epoch):
+    for i, (inputs, labels) in enumerate(dataloader):
+        # forward, backward, update
+        if (i+1) % 5 == 0:
+            print("epoch {}/{}, step {}/{}"
+                  .format(epoch+1, num_epoch, i+1, n_iterations))
+
