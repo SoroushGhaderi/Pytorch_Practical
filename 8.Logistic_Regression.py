@@ -17,16 +17,16 @@ class LogisticRegression(nn.Module):
 
 
 def main():
-    # load dataset
+    # Load dataset
     breast_cancer = datasets.load_breast_cancer()
     X, y = breast_cancer.data, breast_cancer.target
 
     n_samples, n_features = X.shape
     print(f"n_samples: {n_samples}, n_features: {n_features}")
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y,
-                                                        test_size=0.2,
-                                                        random_state=42)
+    [X_train, X_test, y_train, y_test] = train_test_split(X, y,
+                                                          test_size=0.2,
+                                                          random_state=42)
     # Scale data
     standard_scalar = StandardScaler()
     X_train = standard_scalar.fit_transform(X_train)
